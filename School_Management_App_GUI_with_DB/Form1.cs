@@ -52,6 +52,12 @@ namespace School_Management_App_GUI_with_DB
                             studentPanel.Width = flAttendance.Width - 40;
                             studentPanel.Height = 50; // increased height
                             studentPanel.Margin = new Padding(5);
+
+                            // Label
+                            Label lblStudent = new Label();
+                            lblStudent.Text = $"{studentRollNo} - {studentName}";
+                            lblStudent.Width = 150;
+                            lblStudent.Location = new Point(5, 15);
                         }
                     }
                 }
