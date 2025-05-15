@@ -72,7 +72,14 @@ namespace School_Management_App_GUI_with_DB
                             rdoAbsent.Location = new Point(250, 15);
                             rdoAbsent.Name = $"absent_{studentId}";
                             rdoAbsent.AutoSize = true;
-                            
+
+                            // Add controls to panel
+                            studentPanel.Controls.Add(lblStudent);
+                            studentPanel.Controls.Add(rdoPresent);
+                            studentPanel.Controls.Add(rdoAbsent);
+
+                            // Add panel to FlowLayoutPanel
+                            flAttendance.Controls.Add(studentPanel);
                         }
                     }
                 }
