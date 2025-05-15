@@ -65,6 +65,14 @@ namespace School_Management_App_GUI_with_DB
                             rdoPresent.Location = new Point(170, 15);
                             rdoPresent.Name = $"present_{studentId}";
                             rdoPresent.AutoSize = true;
+
+                            // RadioButton: Absent
+                            RadioButton rdoAbsent = new RadioButton();
+                            rdoAbsent.Text = "Absent";
+                            rdoAbsent.Location = new Point(250, 15);
+                            rdoAbsent.Name = $"absent_{studentId}";
+                            rdoAbsent.AutoSize = true;
+                            
                         }
                     }
                 }
