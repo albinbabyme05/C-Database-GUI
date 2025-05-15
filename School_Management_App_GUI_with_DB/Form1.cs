@@ -47,7 +47,11 @@ namespace School_Management_App_GUI_with_DB
                             string studentName = reader["name"].ToString();
                             int studentRollNo = Convert.ToInt32(reader["roll_no"]);
 
-
+                            // created a panel for adding student data
+                            Panel studentPanel = new Panel();
+                            studentPanel.Width = flAttendance.Width - 40;
+                            studentPanel.Height = 50; // increased height
+                            studentPanel.Margin = new Padding(5);
                         }
                     }
                 }
