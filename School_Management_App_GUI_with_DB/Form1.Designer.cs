@@ -28,100 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            dtpDate = new DateTimePicker();
-            btnViewHistory = new Button();
-            label3 = new Label();
-            label4 = new Label();
-            panelAttendance = new Panel();
-            btnMarkAttendance = new Button();
-            btnReset = new Button();
             label2 = new Label();
             cbStudents = new ComboBox();
             btnLoadHistory = new Button();
             dgvHistory = new DataGridView();
-            groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            btnMarkAttendance = new Button();
+            btnReset = new Button();
+            btnViewHistory = new Button();
+            dtpDate = new DateTimePicker();
+            label1 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            gbAttendance = new GroupBox();
+            flAttendance = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dgvHistory).BeginInit();
-            groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            gbAttendance.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(33, 91);
-            label1.Name = "label1";
-            label1.Size = new Size(67, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Date : ";
-            // 
-            // dtpDate
-            // 
-            dtpDate.Font = new Font("Segoe UI", 12F);
-            dtpDate.Location = new Point(106, 91);
-            dtpDate.Name = "dtpDate";
-            dtpDate.Size = new Size(250, 34);
-            dtpDate.TabIndex = 1;
-            // 
-            // btnViewHistory
-            // 
-            btnViewHistory.Font = new Font("Segoe UI", 12F);
-            btnViewHistory.Location = new Point(464, 91);
-            btnViewHistory.Name = "btnViewHistory";
-            btnViewHistory.Size = new Size(168, 40);
-            btnViewHistory.TabIndex = 2;
-            btnViewHistory.Text = "View History ⏩";
-            btnViewHistory.UseVisualStyleBackColor = true;
-            btnViewHistory.Click += btnViewHistory_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 16F);
-            label3.Location = new Point(269, 23);
-            label3.Name = "label3";
-            label3.Size = new Size(440, 37);
-            label3.TabIndex = 4;
-            label3.Text = "Attendence Form N.H.S.S. Chemperi";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(3, 60);
-            label4.Name = "label4";
-            label4.Size = new Size(999, 20);
-            label4.TabIndex = 5;
-            label4.Text = "===================================================================================================";
-            // 
-            // panelAttendance
-            // 
-            panelAttendance.AutoScroll = true;
-            panelAttendance.Location = new Point(17, 137);
-            panelAttendance.Name = "panelAttendance";
-            panelAttendance.Size = new Size(995, 208);
-            panelAttendance.TabIndex = 6;
-            // 
-            // btnMarkAttendance
-            // 
-            btnMarkAttendance.Font = new Font("Segoe UI", 12F);
-            btnMarkAttendance.Location = new Point(464, 351);
-            btnMarkAttendance.Name = "btnMarkAttendance";
-            btnMarkAttendance.Size = new Size(194, 45);
-            btnMarkAttendance.TabIndex = 7;
-            btnMarkAttendance.Text = "Mark Attendance";
-            btnMarkAttendance.UseVisualStyleBackColor = true;
-            // 
-            // btnReset
-            // 
-            btnReset.Font = new Font("Segoe UI", 12F);
-            btnReset.Location = new Point(903, 351);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(99, 45);
-            btnReset.TabIndex = 8;
-            btnReset.Text = "Reset";
-            btnReset.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -162,23 +86,6 @@
             dgvHistory.Size = new Size(919, 231);
             dgvHistory.TabIndex = 12;
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(dtpDate);
-            groupBox1.Controls.Add(btnViewHistory);
-            groupBox1.Controls.Add(btnReset);
-            groupBox1.Controls.Add(panelAttendance);
-            groupBox1.Controls.Add(btnMarkAttendance);
-            groupBox1.Location = new Point(9, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1040, 411);
-            groupBox1.TabIndex = 13;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(label2);
@@ -192,38 +99,132 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
             // 
+            // btnMarkAttendance
+            // 
+            btnMarkAttendance.Font = new Font("Segoe UI", 12F);
+            btnMarkAttendance.Location = new Point(464, 351);
+            btnMarkAttendance.Name = "btnMarkAttendance";
+            btnMarkAttendance.Size = new Size(194, 45);
+            btnMarkAttendance.TabIndex = 7;
+            btnMarkAttendance.Text = "Mark Attendance";
+            btnMarkAttendance.UseVisualStyleBackColor = true;
+            // 
+            // btnReset
+            // 
+            btnReset.Font = new Font("Segoe UI", 12F);
+            btnReset.Location = new Point(903, 351);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(99, 45);
+            btnReset.TabIndex = 8;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = true;
+            // 
+            // btnViewHistory
+            // 
+            btnViewHistory.Font = new Font("Segoe UI", 12F);
+            btnViewHistory.Location = new Point(464, 91);
+            btnViewHistory.Name = "btnViewHistory";
+            btnViewHistory.Size = new Size(168, 40);
+            btnViewHistory.TabIndex = 2;
+            btnViewHistory.Text = "View History ⏩";
+            btnViewHistory.UseVisualStyleBackColor = true;
+            btnViewHistory.Click += btnViewHistory_Click;
+            // 
+            // dtpDate
+            // 
+            dtpDate.Font = new Font("Segoe UI", 12F);
+            dtpDate.Location = new Point(106, 91);
+            dtpDate.Name = "dtpDate";
+            dtpDate.Size = new Size(250, 34);
+            dtpDate.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F);
+            label1.Location = new Point(33, 91);
+            label1.Name = "label1";
+            label1.Size = new Size(67, 28);
+            label1.TabIndex = 0;
+            label1.Text = "Date : ";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(3, 60);
+            label4.Name = "label4";
+            label4.Size = new Size(999, 20);
+            label4.TabIndex = 5;
+            label4.Text = "===================================================================================================";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 16F);
+            label3.Location = new Point(269, 23);
+            label3.Name = "label3";
+            label3.Size = new Size(440, 37);
+            label3.TabIndex = 4;
+            label3.Text = "Attendence Form N.H.S.S. Chemperi";
+            // 
+            // gbAttendance
+            // 
+            gbAttendance.Controls.Add(flAttendance);
+            gbAttendance.Controls.Add(label3);
+            gbAttendance.Controls.Add(label4);
+            gbAttendance.Controls.Add(label1);
+            gbAttendance.Controls.Add(dtpDate);
+            gbAttendance.Controls.Add(btnViewHistory);
+            gbAttendance.Controls.Add(btnReset);
+            gbAttendance.Controls.Add(btnMarkAttendance);
+            gbAttendance.Location = new Point(9, 12);
+            gbAttendance.Name = "gbAttendance";
+            gbAttendance.Size = new Size(1040, 411);
+            gbAttendance.TabIndex = 13;
+            gbAttendance.TabStop = false;
+            gbAttendance.Text = "Student Attendance";
+            // 
+            // flAttendance
+            // 
+            flAttendance.AutoScroll = true;
+            flAttendance.FlowDirection = FlowDirection.TopDown;
+            flAttendance.Location = new Point(33, 131);
+            flAttendance.Name = "flAttendance";
+            flAttendance.Size = new Size(984, 214);
+            flAttendance.TabIndex = 9;
+            flAttendance.WrapContents = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1077, 801);
             Controls.Add(groupBox2);
-            Controls.Add(groupBox1);
+            Controls.Add(gbAttendance);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dgvHistory).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            gbAttendance.ResumeLayout(false);
+            gbAttendance.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Label label1;
-        private DateTimePicker dtpDate;
-        private Button btnViewHistory;
-        private Label label3;
-        private Label label4;
-        private Panel panelAttendance;
-        private Button btnMarkAttendance;
-        private Button btnReset;
         private Label label2;
         private ComboBox cbStudents;
         private Button btnLoadHistory;
         private DataGridView dgvHistory;
-        private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private Button btnMarkAttendance;
+        private Button btnReset;
+        private Button btnViewHistory;
+        private DateTimePicker dtpDate;
+        private Label label1;
+        private Label label4;
+        private Label label3;
+        private GroupBox gbAttendance;
+        private FlowLayoutPanel flAttendance;
     }
 }

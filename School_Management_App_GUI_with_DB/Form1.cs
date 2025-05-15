@@ -35,7 +35,7 @@ namespace School_Management_App_GUI_with_DB
                 {
                     conn.Open();
 
-                    using (var cmd = new NpgsqlCommand("SELECT id, name, roll_no FROM students ORDER BY roll_no", conn))
+                    using (var cmd = new NpgsqlCommand("SELECT id, name, roll_no FROM student ORDER BY roll_no", conn))
                     using (var reader = cmd.ExecuteReader())
                     {
                         
