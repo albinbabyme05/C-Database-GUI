@@ -58,6 +58,13 @@ namespace School_Management_App_GUI_with_DB
                             lblStudent.Text = $"{studentRollNo} - {studentName}";
                             lblStudent.Width = 150;
                             lblStudent.Location = new Point(5, 15);
+
+                            // RadioButton: Present
+                            RadioButton rdoPresent = new RadioButton();
+                            rdoPresent.Text = "Present";
+                            rdoPresent.Location = new Point(170, 15);
+                            rdoPresent.Name = $"present_{studentId}";
+                            rdoPresent.AutoSize = true;
                         }
                     }
                 }
