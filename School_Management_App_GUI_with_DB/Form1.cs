@@ -38,7 +38,17 @@ namespace School_Management_App_GUI_with_DB
                     using (var cmd = new NpgsqlCommand("SELECT id, name, roll_no FROM student ORDER BY roll_no", conn))
                     using (var reader = cmd.ExecuteReader())
                     {
-                        
+                        // Clear previous entries
+                        flAttendance.Controls.Clear();
+
+                        while (reader.Read())
+                        {
+                            int studentId = Convert.ToInt32(reader["id"]);
+                            string studentName = reader["name"].ToString();
+                            int studentRollNo = Convert.ToInt32(reader["roll_no"]);
+
+
+                        }
                     }
                 }
                 catch (Exception ex)
