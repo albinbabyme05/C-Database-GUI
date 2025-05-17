@@ -90,5 +90,76 @@ namespace School_Management_App_GUI_with_DB
             }
         }
 
+        //mark attendance
+        private void btnMarkAttendance_Click(object sender, EventArgs e)
+        {
+            using(var conn = new NpgsqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (var trans = conn.BeginTransaction())
+                    {
+                        try
+                        {
+                            foreach (Panel studentPanel in flAttendance.Controls)
+                            {
+                                int student_id = -1;
+                                string status = "";
+
+                                foreach (Control ctrol in studentPanel.Controls)
+                                {
+                                    if (ctrol is RadioButton rdoBtn && rdoBtn.Checked)
+                                    {
+                                        if (rdoBtn.Name.StartsWith("present_"))
+                                        {
+                                            string[] id = rdoBtn.Name.Split("_");
+                                            student_id = Convert.ToInt32(id[1]);
+                                            status = id[0];
+                                        }
+                                        else if (rdoBtn.Name.StartsWith("absent_"))
+                                        {
+                                            string[] id = rdoBtn.Name.Split("_");
+                                            student_id = Convert.ToInt32(id[1]);
+                                            status = id[0];
+                                        }
+                                    }
+                                }
+                                // insert studnet with status only
+                                if (student_id != -1 && !string.IsNullOrEmpty(status))
+                                {
+                                    string insertDataQuery = "INSERT INTO attendence (student_id, date, status) VALUES (@student_id, @date, @status)";
+                                    using (var cmd = new NpgsqlCommand(insertDataQuery, conn, trans))
+                                    {
+                                        cmd.Parameters.AddWithValue("student_id", student_id);
+                                        cmd.Parameters.AddWithValue("date", DateTime.Now.Date);
+                                        cmd.Parameters.AddWithValue("status", status);
+
+                                        cmd.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+                            trans.Commit();
+                            MessageBox.Show("Date inserted to Attendence Table");
+                        }
+                        catch (PostgresException ex) when (ex.SqlState == "23503")
+                        {
+                            MessageBox.Show("Error: student ID not found. \n " +
+                                "Make sure all students exist in the student table.");
+                            trans.Rollback();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
+            }   
+        }
+
+        
+
+
+    //formend.
     }
 }

@@ -108,6 +108,7 @@
             btnMarkAttendance.TabIndex = 7;
             btnMarkAttendance.Text = "Mark Attendance";
             btnMarkAttendance.UseVisualStyleBackColor = true;
+            btnMarkAttendance.Click += btnMarkAttendance_Click;
             // 
             // btnReset
             // 
