@@ -58,9 +58,8 @@ namespace School_Management_App_GUI_with_DB
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-           
             dtpDate.Value = DateTime.Today.Date;
-            btnMarkAttendance.Enabled = false; //if attendance marked
+            btnMarkAttendance.Enabled = true; //if attendance marked
             foreach (Panel studentPanel in flAttendance.Controls)
             {
                 foreach (Control ctrl in studentPanel.Controls)
@@ -71,9 +70,7 @@ namespace School_Management_App_GUI_with_DB
                         
                     }
                 }
-
             }
-
         }
         //formend.
     }
