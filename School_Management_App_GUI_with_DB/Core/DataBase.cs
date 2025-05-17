@@ -2,6 +2,7 @@
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace School_Management_App_GUI_with_DB.Core
 {
     public class DataBaseManager
     {
+        Student student = new Student();
         public void MarkAttendance(string connectionString,  FlowLayoutPanel flAttendance, DateTimePicker dtpDate)
         {
             using (var conn = new NpgsqlConnection(connectionString))
@@ -85,8 +87,8 @@ namespace School_Management_App_GUI_with_DB.Core
                 try
                 {
                     conn.Open();
-
-                    using (var cmd = new NpgsqlCommand("SELECT id, name, roll_no FROM student ORDER BY roll_no", conn))
+                    string QueryString = "SELECT id, name, roll_no FROM student ORDER BY roll_no";
+                    using (var cmd = new NpgsqlCommand(QueryString, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
                         // Clear previous entries
@@ -141,7 +143,80 @@ namespace School_Management_App_GUI_with_DB.Core
             }
         }
 
-        
+        public void LoadHistory(string connectionString, int id, DataGridView dgvHistory)
+        {
+            //student attendance history based on name and  id
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    string QueryString = "SELECT date, status FROM attendence WHERE  student_id = @id ORDER BY date DESC";
+                    using (var cmd = new NpgsqlCommand(QueryString, conn))
+                    
+                    {
+                        cmd.Parameters.AddWithValue("@id", id);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add("Date", typeof(DateTime));
+                            dt.Columns.Add("Status", typeof(string));
+                            while (reader.Read())
+                            {
+                                DateTime date = reader.GetDateTime(0);
+                                string status = reader.GetString(1);
+                                dt.Rows.Add(date, status);
+                            }
+                            dgvHistory.DataSource = dt;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                }
+            }
+
+        }
+
+        // show stduent listitem.Name
+        public List<Student> ViewStudentList(string connectionString)
+        {
+            //populate student attendance history based on date
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                List<Student> studentsNameList = new List<Student>();
+                try
+                {
+                    conn.Open();
+                    string QueryString = "SELECT id, name FROM student";
+                    using (var cmd = new NpgsqlCommand(QueryString, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string studentsName = reader["name"].ToString();
+                            int studentsId = Convert.ToInt32(reader["id"]);
+
+                            studentsNameList.Add( new Student
+                            {
+                                Id = studentsId, 
+                                Name = studentsName
+                            });
+                        }
+                    }
+                    return studentsNameList;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex);
+                    return studentsNameList;
+                }
+            }
+        }
+
+       
 
 
 

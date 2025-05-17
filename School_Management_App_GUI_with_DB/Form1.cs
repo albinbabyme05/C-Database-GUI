@@ -16,6 +16,10 @@ namespace School_Management_App_GUI_with_DB
         {
             InitializeComponent();
             LoadForm();
+            //  list of student list
+            ListStudent();
+
+
 
         }
 
@@ -64,14 +68,42 @@ namespace School_Management_App_GUI_with_DB
             {
                 foreach (Control ctrl in studentPanel.Controls)
                 {
-                    if(ctrl is RadioButton rdoBtn)
+                    if (ctrl is RadioButton rdoBtn)
                     {
                         rdoBtn.Checked = false;
-                        
+
                     }
                 }
             }
         }
+
+        private void btnLoadHistory_Click(object sender, EventArgs e)
+        {
+            if (cbStudents.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a student.");
+                return;
+            }
+
+            int id = (int)cbStudents.SelectedValue;
+            db.LoadHistory(connectionString, id, dgvHistory);
+        }
+
+        private void cbStudents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        public void ListStudent()
+        {
+            List<string> studentsList = new List<string>(); 
+            foreach (var item in db.ViewStudentList(connectionString))
+            {
+                studentsList.Add(item.Name);
+            }
+            cbStudents.DataSource = studentsList;
+        }
+
+
         //formend.
     }
 }
