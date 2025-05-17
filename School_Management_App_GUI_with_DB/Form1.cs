@@ -79,7 +79,14 @@ namespace School_Management_App_GUI_with_DB
 
         private void btnLoadHistory_Click(object sender, EventArgs e)
         {
-            
+            if (cbStudents.SelectedValue == null)
+            {
+                MessageBox.Show("Please select a student.");
+                return;
+            }
+
+            int id = (int)cbStudents.SelectedValue;
+            db.LoadHistory(connectionString, id, dgvHistory);
         }
 
         private void cbStudents_SelectedIndexChanged(object sender, EventArgs e)

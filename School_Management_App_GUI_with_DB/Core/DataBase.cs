@@ -2,6 +2,7 @@
 using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,9 +143,9 @@ namespace School_Management_App_GUI_with_DB.Core
             }
         }
 
-        public void LoadHistory(string connectionString)
+        public void LoadHistory(string connectionString, int id, DataGridView dgvHistory)
         {
-            //populate student attendance history based on date
+            //student attendance history based on name and  id
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 try
@@ -152,14 +153,23 @@ namespace School_Management_App_GUI_with_DB.Core
                     conn.Open();
                     string QueryString = "SELECT date, status FROM attendence WHERE  student_id = @id ORDER BY date DESC";
                     using (var cmd = new NpgsqlCommand(QueryString, conn))
-                    using (var reader = cmd.ExecuteReader())
+                    
                     {
-                        while (reader.Read())
+                        cmd.Parameters.AddWithValue("@id", id);
+                        using (var reader = cmd.ExecuteReader())
                         {
-                           
+                            DataTable dt = new DataTable();
+                            dt.Columns.Add("Date", typeof(DateTime));
+                            dt.Columns.Add("Status", typeof(string));
+                            while (reader.Read())
+                            {
+                                DateTime date = reader.GetDateTime(0);
+                                string status = reader.GetString(1);
+                                dt.Rows.Add(date, status);
+                            }
+                            dgvHistory.DataSource = dt;
                         }
                     }
-
                 }
                 catch (Exception ex)
                 {
