@@ -58,22 +58,25 @@
             // 
             // cbStudents
             // 
+            cbStudents.AllowDrop = true;
             cbStudents.Font = new Font("Segoe UI", 12F);
             cbStudents.FormattingEnabled = true;
             cbStudents.Location = new Point(231, 36);
             cbStudents.Name = "cbStudents";
             cbStudents.Size = new Size(223, 36);
             cbStudents.TabIndex = 10;
+            cbStudents.SelectedIndexChanged += cbStudents_SelectedIndexChanged;
             // 
             // btnLoadHistory
             // 
             btnLoadHistory.Font = new Font("Segoe UI", 12F);
-            btnLoadHistory.Location = new Point(853, 39);
+            btnLoadHistory.Location = new Point(795, 39);
             btnLoadHistory.Name = "btnLoadHistory";
-            btnLoadHistory.Size = new Size(103, 36);
+            btnLoadHistory.Size = new Size(161, 36);
             btnLoadHistory.TabIndex = 11;
-            btnLoadHistory.Text = "Load";
+            btnLoadHistory.Text = "⏩ View History";
             btnLoadHistory.UseVisualStyleBackColor = true;
+            btnLoadHistory.Click += btnLoadHistory_Click;
             // 
             // dgvHistory
             // 
