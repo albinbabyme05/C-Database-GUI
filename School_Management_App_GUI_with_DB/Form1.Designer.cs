@@ -35,7 +35,6 @@
             groupBox2 = new GroupBox();
             btnMarkAttendance = new Button();
             btnReset = new Button();
-            btnViewHistory = new Button();
             dtpDate = new DateTimePicker();
             label1 = new Label();
             label4 = new Label();
@@ -119,17 +118,7 @@
             btnReset.TabIndex = 8;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = true;
-            // 
-            // btnViewHistory
-            // 
-            btnViewHistory.Font = new Font("Segoe UI", 12F);
-            btnViewHistory.Location = new Point(464, 91);
-            btnViewHistory.Name = "btnViewHistory";
-            btnViewHistory.Size = new Size(168, 40);
-            btnViewHistory.TabIndex = 2;
-            btnViewHistory.Text = "View History ⏩";
-            btnViewHistory.UseVisualStyleBackColor = true;
-            btnViewHistory.Click += btnViewHistory_Click;
+            btnReset.Click += btnReset_Click;
             // 
             // dtpDate
             // 
@@ -175,7 +164,6 @@
             gbAttendance.Controls.Add(label4);
             gbAttendance.Controls.Add(label1);
             gbAttendance.Controls.Add(dtpDate);
-            gbAttendance.Controls.Add(btnViewHistory);
             gbAttendance.Controls.Add(btnReset);
             gbAttendance.Controls.Add(btnMarkAttendance);
             gbAttendance.Location = new Point(9, 12);
@@ -220,7 +208,6 @@
         private GroupBox groupBox2;
         private Button btnMarkAttendance;
         private Button btnReset;
-        private Button btnViewHistory;
         private DateTimePicker dtpDate;
         private Label label1;
         private Label label4;
