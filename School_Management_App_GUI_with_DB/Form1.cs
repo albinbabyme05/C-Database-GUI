@@ -17,25 +17,7 @@ namespace School_Management_App_GUI_with_DB
             InitializeComponent();
             LoadForm();
             //  list of student list
-            ListStudent();
-
-
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void rbPresent_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnViewHistory_Click(object sender, EventArgs e)
-        {
-
+            db.ViewStudentList(connectionString, cbStudents);
         }
 
         //load form 
@@ -71,7 +53,6 @@ namespace School_Management_App_GUI_with_DB
                     if (ctrl is RadioButton rdoBtn)
                     {
                         rdoBtn.Checked = false;
-
                     }
                 }
             }
@@ -79,30 +60,16 @@ namespace School_Management_App_GUI_with_DB
 
         private void btnLoadHistory_Click(object sender, EventArgs e)
         {
-            if (cbStudents.SelectedValue == null)
-            {
-                MessageBox.Show("Please select a student.");
-                return;
-            }
-
             int id = (int)cbStudents.SelectedValue;
-            db.LoadHistory(connectionString, id, dgvHistory);
+            //student attendance history based on name and  id
+            db.LoadHistory(connectionString,id, dgvHistory);
         }
 
         private void cbStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
             
         }
-        public void ListStudent()
-        {
-            List<string> studentsList = new List<string>(); 
-            foreach (var item in db.ViewStudentList(connectionString))
-            {
-                studentsList.Add(item.Name);
-            }
-            cbStudents.DataSource = studentsList;
-        }
-
+       
 
         //formend.
     }

@@ -65,7 +65,6 @@
             cbStudents.Name = "cbStudents";
             cbStudents.Size = new Size(223, 36);
             cbStudents.TabIndex = 10;
-            cbStudents.SelectedIndexChanged += cbStudents_SelectedIndexChanged;
             // 
             // btnLoadHistory
             // 
@@ -80,6 +79,7 @@
             // 
             // dgvHistory
             // 
+            dgvHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvHistory.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHistory.Location = new Point(37, 87);
             dgvHistory.Name = "dgvHistory";
