@@ -18,12 +18,14 @@ namespace School_Management_App_GUI_with_DB
             LoadForm();
             //  list of student list
             db.ViewStudentList(connectionString, cbStudents);
+            cbStudents.Text = "";
         }
 
         //load form 
         private void LoadForm()
         {
             db.AddDataToDatabase(connectionString, flAttendance);
+            
         }
 
         //mark attendance
@@ -45,6 +47,9 @@ namespace School_Management_App_GUI_with_DB
         private void btnReset_Click(object sender, EventArgs e)
         {
             dtpDate.Value = DateTime.Today.Date;
+            cbStudents.Text= "";
+            dgvHistory.DataSource = null;
+            dgvHistory.Refresh();
             btnMarkAttendance.Enabled = true; //if attendance marked
             foreach (Panel studentPanel in flAttendance.Controls)
             {
