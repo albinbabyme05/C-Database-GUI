@@ -143,8 +143,9 @@ namespace School_Management_App_GUI_with_DB.Core
             }
         }
 
-        public void LoadHistory(string connectionString, int id, DataGridView dgvHistory)
+        public void LoadHistory(string connectionString,int id, DataGridView dgvHistory)
         {
+            
             //student attendance history based on name and  id
             using (var conn = new NpgsqlConnection(connectionString))
             {
@@ -159,14 +160,7 @@ namespace School_Management_App_GUI_with_DB.Core
                         using (var reader = cmd.ExecuteReader())
                         {
                             DataTable dt = new DataTable();
-                            dt.Columns.Add("Date", typeof(DateTime));
-                            dt.Columns.Add("Status", typeof(string));
-                            while (reader.Read())
-                            {
-                                DateTime date = reader.GetDateTime(0);
-                                string status = reader.GetString(1);
-                                dt.Rows.Add(date, status);
-                            }
+                            dt.Load(reader);
                             dgvHistory.DataSource = dt;
                         }
                     }
@@ -180,38 +174,30 @@ namespace School_Management_App_GUI_with_DB.Core
         }
 
         // show stduent listitem.Name
-        public List<Student> ViewStudentList(string connectionString)
+        public void ViewStudentList(string connectionString, System.Windows.Forms.ComboBox cbStudent)
         {
             //populate student attendance history based on date
             using (var conn = new NpgsqlConnection(connectionString))
             {
-                List<Student> studentsNameList = new List<Student>();
                 try
                 {
                     conn.Open();
-                    string QueryString = "SELECT id, name FROM student";
+                    string QueryString = "SELECT id, name FROM student ORDER BY name";
                     using (var cmd = new NpgsqlCommand(QueryString, conn))
                     using (var reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read())
-                        {
-                            string studentsName = reader["name"].ToString();
-                            int studentsId = Convert.ToInt32(reader["id"]);
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
 
-                            studentsNameList.Add( new Student
-                            {
-                                Id = studentsId, 
-                                Name = studentsName
-                            });
-                        }
+                        cbStudent.DataSource = dt;
+                        cbStudent.DisplayMember = "name";
+                        cbStudent.ValueMember = "id";
                     }
-                    return studentsNameList;
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex);
-                    return studentsNameList;
+                   
                 }
             }
         }
@@ -219,6 +205,6 @@ namespace School_Management_App_GUI_with_DB.Core
        
 
 
-
+    //end of class
     }
 }
