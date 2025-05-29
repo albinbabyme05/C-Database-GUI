@@ -1,4 +1,4 @@
-﻿namespace WeatherApp.Core
+﻿namespace FileDownloader
 {
     public class Class1
     {
