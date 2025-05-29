@@ -1,4 +1,4 @@
-namespace Winfrom_plus_Database
+namespace WeatherApp.UI
 {
     public partial class Form1 : Form
     {
