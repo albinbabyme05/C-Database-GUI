@@ -1,4 +1,4 @@
-namespace School_Management_App_GUI_with_DB
+namespace FileDownloaderGUI
 {
     internal static class Program
     {
