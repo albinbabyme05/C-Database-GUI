@@ -10,31 +10,26 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
+
 namespace WeatherApp.Core
 {
     public class WeatherService
     {
 
-        WeatherInfo weatherInfo;
         WeatherAppConfig config = new WeatherAppConfig();
 
         static HttpClient client = new HttpClient();
          
 
+        //get Latitude and longitude
         public  async Task<(double lat, double lon)> GetCityLatLong(string city)
         {
-            List<string> latlonlist = new List<string>();
-            //var queryParams = $"";
-            string url = $"http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=5&appid={config.GetApiKey()}"
-;
-            //string url = $"{WeatherAppConfig.FINDLatLongURL}?q={city},{state},{zipcode}&appid={config.GetApiKey()}";
-
-
+            string queryParams = $"?q={city}&limit=5&appid={config.GetApiKey()}";
+            string url = $"{WeatherAppConfig.FINDLatLongURL}{queryParams}";
+           
             client.DefaultRequestHeaders.Accept.Clear(); // optional to avoid duplicate headers
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-
-            
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
@@ -60,5 +55,53 @@ namespace WeatherApp.Core
 
             return (0, 0);
         }
+
+        //get weather data
+        public async Task<(string description, double temp, double temp_feel)> GetWeatherDetailAsync(double lat, double lon)
+        {
+            string queryParams = $"?lat={lat}&lon={lon}&appid={config.GetApiKey()}";
+            string url = $"{WeatherAppConfig.BASEURL}{queryParams}";
+
+            client.DefaultRequestHeaders.Accept.Clear(); 
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            try
+            {
+                HttpResponseMessage res = await client.GetAsync(url);
+                if (res.IsSuccessStatusCode)
+                {
+                    var resJson = await res.Content.ReadAsStringAsync();
+                    
+                    var datas = JsonDocument.Parse(resJson);
+                    var root = datas.RootElement;
+                    //Console.WriteLine(root);
+
+                    double temp = root.GetProperty("main").GetProperty("temp").GetDouble();
+                    double temp_feel = root.GetProperty("main").GetProperty("feels_like").GetDouble();
+                    string description = root.GetProperty("weather")[0].GetProperty("description").GetString();
+                    double minTemp = root.GetProperty("main").GetProperty("temp_min").GetDouble();
+                    double maxTemp = root.GetProperty("main").GetProperty("temp_max").GetDouble();
+
+                    //Console.WriteLine($"Weater condition: {description}, Tempertaure: {ConvertToCelsius(temp)}," +
+                    //    $" Feels Like: {ConvertToCelsius(temp_feel)}");
+                    
+                    return (description, ConvertToCelsius(temp), ConvertToCelsius(temp_feel));
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error "+e);
+            }
+            return("", 0, 0);
+
+        }
+
+        public double ConvertToCelsius(double temp)
+        {
+            return Math.Round(temp-273.15, 2);
+        }
+
+    //end class
     }
 }
