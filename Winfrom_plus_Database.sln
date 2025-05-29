@@ -5,8 +5,6 @@ VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winfrom_plus_Database", "Winfrom_plus_Database\Winfrom_plus_Database.csproj", "{75F3ADFD-6B45-4AFA-868D-E3A75D111F7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "School_Management_App_GUI_with_DB", "School_Management_App_GUI_with_DB\School_Management_App_GUI_with_DB.csproj", "{DE1B6273-9A4B-472B-AAB9-83718B54663F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileDownloader", "FileDownloader\FileDownloader.csproj", "{91E00673-E758-4AD6-A85E-355B6DF66F44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileDownloaderGUI", "FileDownloaderGUI\FileDownloaderGUI.csproj", "{12A3EA9E-6950-45AF-A12A-2C475EB7E541}"
@@ -14,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Core", "WeatherApp.Core\WeatherApp.Core.csproj", "{AA1FB627-F324-4D9E-AC81-0A3CDC179647}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.UI", "WeatherApp.UI\WeatherApp.UI.csproj", "{9A846975-E6F1-41CC-B28B-C1AB8076A73E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Console", "WeatherApp.Console\WeatherApp.Console.csproj", "{D58769CE-97EC-461A-842F-D62CDA5EC7B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{75F3ADFD-6B45-4AFA-868D-E3A75D111F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F3ADFD-6B45-4AFA-868D-E3A75D111F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F3ADFD-6B45-4AFA-868D-E3A75D111F7B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE1B6273-9A4B-472B-AAB9-83718B54663F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE1B6273-9A4B-472B-AAB9-83718B54663F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE1B6273-9A4B-472B-AAB9-83718B54663F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE1B6273-9A4B-472B-AAB9-83718B54663F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91E00673-E758-4AD6-A85E-355B6DF66F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91E00673-E758-4AD6-A85E-355B6DF66F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91E00673-E758-4AD6-A85E-355B6DF66F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{9A846975-E6F1-41CC-B28B-C1AB8076A73E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A846975-E6F1-41CC-B28B-C1AB8076A73E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A846975-E6F1-41CC-B28B-C1AB8076A73E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D58769CE-97EC-461A-842F-D62CDA5EC7B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D58769CE-97EC-461A-842F-D62CDA5EC7B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D58769CE-97EC-461A-842F-D62CDA5EC7B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D58769CE-97EC-461A-842F-D62CDA5EC7B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
